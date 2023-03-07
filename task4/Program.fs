@@ -11,10 +11,10 @@
 let listOfPowers n m =
     let rec listOfPowers n m previous =
         match m - n with
-        | 1L -> [ logPowerOf2 m ]
+        | 1L -> [ previous * 2L ]
         | _ ->
             let newElement = previous * 2L
-            newElement :: (listOfPowers (n + 1L) (m) newElement)
+            newElement :: (listOfPowers (n + 1L) m newElement)
 
     listOfPowers n (n + m) (logPowerOf2 n)
 
