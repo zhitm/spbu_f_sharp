@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "spbu_f_sharp", "spbu_f_sharp\spbu_f_sharp.fsproj", "{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hw3", "Hw3", "{6BD12E28-B1EB-4631-9CB1-EE51601B046F}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Latex", "Latex\Latex.fsproj", "{6990D0EB-2189-459F-A8FC-8454D5863082}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,12 @@ Global
 		{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6990D0EB-2189-459F-A8FC-8454D5863082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6990D0EB-2189-459F-A8FC-8454D5863082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6990D0EB-2189-459F-A8FC-8454D5863082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6990D0EB-2189-459F-A8FC-8454D5863082}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6990D0EB-2189-459F-A8FC-8454D5863082} = {6BD12E28-B1EB-4631-9CB1-EE51601B046F}
 	EndGlobalSection
 EndGlobal
