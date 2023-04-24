@@ -2,6 +2,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "spbu_f_sharp", "spbu_f_sharp\spbu_f_sharp.fsproj", "{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework", "Homework", "{34AC996E-6875-4A0B-A4A1-EE8D67444C8C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task2", "Task2", "{2D1C926E-43AC-4270-89A6-0A4E9E3FA67E}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PointFree", "PointFree\PointFree.fsproj", "{19291BFA-61BC-4A3F-BA0D-540A6C8B710B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestPointFree", "TestPointFree\TestPointFree.fsproj", "{FA722B64-E0DC-4154-877B-0EF4BB9BE5A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +20,18 @@ Global
 		{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19291BFA-61BC-4A3F-BA0D-540A6C8B710B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19291BFA-61BC-4A3F-BA0D-540A6C8B710B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19291BFA-61BC-4A3F-BA0D-540A6C8B710B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19291BFA-61BC-4A3F-BA0D-540A6C8B710B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA722B64-E0DC-4154-877B-0EF4BB9BE5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA722B64-E0DC-4154-877B-0EF4BB9BE5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA722B64-E0DC-4154-877B-0EF4BB9BE5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA722B64-E0DC-4154-877B-0EF4BB9BE5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D1C926E-43AC-4270-89A6-0A4E9E3FA67E} = {34AC996E-6875-4A0B-A4A1-EE8D67444C8C}
+		{19291BFA-61BC-4A3F-BA0D-540A6C8B710B} = {2D1C926E-43AC-4270-89A6-0A4E9E3FA67E}
+		{FA722B64-E0DC-4154-877B-0EF4BB9BE5A0} = {2D1C926E-43AC-4270-89A6-0A4E9E3FA67E}
 	EndGlobalSection
 EndGlobal
