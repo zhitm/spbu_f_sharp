@@ -1,4 +1,5 @@
-﻿open System
+﻿module PhoneBook
+open System
 open System.IO
 open System.Text.Json
 
@@ -11,7 +12,6 @@ type Command =
     | ReadFromFile of string
     | Help
     | Exit
-
 
 type Record = { Name: string; Number: string }
 
@@ -37,17 +37,17 @@ let printRecord record =
 let addRecord records name number =
     { Name = name; Number = number } :: records
 
-let SaveToFile records path =
+let saveToFile records path =
     let json = JsonSerializer.Serialize records
     File.WriteAllText(path, json)
 
 
-let ReadFromFile path =
+let loadFromFile path =
     match File.Exists path with
     | true -> Some(File.ReadAllText(path) |> JsonSerializer.Deserialize<List<Record>>)
     | false -> None
 
-let Help () =
+let help () =
     printfn
         """Commands:
 * findByName -- find record by a given name
@@ -69,7 +69,7 @@ let rec startInteraction records command =
     match command with
     | "exit" -> Environment.Exit(0)
     | "help" ->
-        Help()
+        help()
         startInteraction records (getCommand "> ")
     | "add" ->
         let name = getCommand "Name: "
@@ -90,18 +90,18 @@ let rec startInteraction records command =
     | "print" -> printRecords records
     | "save" ->
         let path = getCommand "Path: "
-        SaveToFile records path
+        saveToFile records path
         startInteraction records (getCommand "> ")
     | "load" ->
         let path = getCommand "Path: "
 
         let newRecords =
-            match ReadFromFile path with
+            match loadFromFile path with
             | None -> records
             | Some x -> x
 
         startInteraction newRecords (getCommand "> ")
     | _ -> printfn "Unknown command"
 
-Help()
+help()
 startInteraction [] (getCommand "> ")
