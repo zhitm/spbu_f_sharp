@@ -47,8 +47,8 @@ let loadFromFile path =
     | true -> Some(File.ReadAllText(path) |> JsonSerializer.Deserialize<List<Record>>)
     | false -> None
 
-let help () =
-    printfn
+let help =
+
         """Commands:
 * findByName -- find record by a given name
 * add --- add record to phone book
@@ -69,7 +69,7 @@ let rec startInteraction records command =
     match command with
     | "exit" -> Environment.Exit(0)
     | "help" ->
-        help()
+        printfn "%s" help
         startInteraction records (getCommand "> ")
     | "add" ->
         let name = getCommand "Name: "
@@ -103,5 +103,5 @@ let rec startInteraction records command =
         startInteraction newRecords (getCommand "> ")
     | _ -> printfn "Unknown command"
 
-help()
+printfn "%s" help
 startInteraction [] (getCommand "> ")
