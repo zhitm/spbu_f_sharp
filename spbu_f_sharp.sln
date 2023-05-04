@@ -2,6 +2,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "spbu_f_sharp", "spbu_f_sharp\spbu_f_sharp.fsproj", "{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homeworks", "Homeworks", "{716CF811-AC2E-431B-BFFB-F15C59F19E08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hw6", "Hw6", "{5F71CCF9-E62A-451C-8A71-C1399915ECDD}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Workflows", "Workflows\Workflows.fsproj", "{93A9DBE7-3247-4DDE-91F9-6171F50E122A}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestWorkflows", "TestWorkflows\TestWorkflows.fsproj", "{C1699110-0002-4948-8944-4E93C85080F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +20,18 @@ Global
 		{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F39FD18A-AC3B-4206-9F01-6EEA6C171A46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93A9DBE7-3247-4DDE-91F9-6171F50E122A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93A9DBE7-3247-4DDE-91F9-6171F50E122A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93A9DBE7-3247-4DDE-91F9-6171F50E122A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93A9DBE7-3247-4DDE-91F9-6171F50E122A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1699110-0002-4948-8944-4E93C85080F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1699110-0002-4948-8944-4E93C85080F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1699110-0002-4948-8944-4E93C85080F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1699110-0002-4948-8944-4E93C85080F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5F71CCF9-E62A-451C-8A71-C1399915ECDD} = {716CF811-AC2E-431B-BFFB-F15C59F19E08}
+		{93A9DBE7-3247-4DDE-91F9-6171F50E122A} = {5F71CCF9-E62A-451C-8A71-C1399915ECDD}
+		{C1699110-0002-4948-8944-4E93C85080F1} = {5F71CCF9-E62A-451C-8A71-C1399915ECDD}
 	EndGlobalSection
 EndGlobal
