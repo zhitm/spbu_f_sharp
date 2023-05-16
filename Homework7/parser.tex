@@ -11,7 +11,8 @@
 
 \section{Parser}
 
-program ::= variable $\vert$ let-expr $\vert$ variable program $\vert$ let-expr program\\
+program ::= term $\vert$ let-exprs term\\
+let-exprs ::= let-expr let-exprs $\vert$ let-expr\\
 let-expr ::= ``let'' variable ``='' term\\
 term ::= atom $\vert$ application $\vert$ abstraction \\
 params ::= variable $\vert$ variable params\\
@@ -23,19 +24,62 @@ atom ::= parenthesized-term $\vert$ variable\\
 parenthesized-term ::= ``(" term ``)"\\
 abstraction ::= ``$\lambda$'' params ``.'' term\\
 
+After factorization:\\
+
+
+
+
+program ::= term $\vert$ let-exprs term\\
+let-exprs ::=let-expr let-exprs $\vert$ let-expr\\
+let-expr ::= ``let'' variable ``='' term\\
+term ::= atom $\vert$ application $\vert$ abstraction \\
+params ::= variable $\vert$ variable params\\
+variable ::= letter $\vert$ variable letter-or-digit\\
+letter-or-digit ::= letter $\vert$ digit\\letter ::= ``a'' $\vert$ ``b'' $\vert$ ... ``Z''\\
+digit ::= ``1'' $\vert$ ... ``9'' $\vert$ ``0''\\
+application ::= atom $\vert$ application atom\\
+atom ::= parenthesized-term $\vert$ variable\\
+parenthesized-term ::= ``(" term ``)"\\
+abstraction ::= ``$\lambda$'' params ``.'' term\\
+
+
+
+
+
 Exaples:\\
 let K = $\lambda$x y.x\\
-program $\rightarrow$ let-expr\\
-| let-expr $\rightarrow$ ``let'' variable ``='' term $\rightarrow$ variable\\
-|| variable $\rightarrow$ ``K''\\
-| let-expr $\rightarrow$ ``let'' variable ``='' term $\rightarrow$ term\\
-|| term $\rightarrow$ abstraction\\
-||| abstraction $\rightarrow$ ``$\lambda$'' params ``.'' term $\rightarrow$ params\\
-|||| params $\rightarrow$ variable params $\rightarrow$ variable\\
-||||| variable $\rightarrow$ x\\
-|||| params $\rightarrow$ variable params $\rightarrow$ params $\rightarrow$ variable\\
-||||| variable $\rightarrow$ y\\
-||| abstraction $\rightarrow$ ``$\lambda$'' params ``.'' term $\rightarrow$ term\\
-|||| term $\rightarrow$ atom $\rightarrow$ variable\\
-||||| variable $\rightarrow$ ``x''\\
+K\\
+
+
+program $\rightarrow$ let-exprs term $\rightarrow$\\
+let-expr term $\rightarrow$ ``let'' variable ``='' term term $\rightarrow$\\
+``let'' letter ``='' term term $\rightarrow$ ``let'' ``K'' ``='' term term$\rightarrow$\\
+``let'' ``K'' ``='' abstraction term$\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' params ``.'' term term$\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' variable params  ``.'' term term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' letter params  ``.'' term term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' params  ``.'' term term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' variable  ``.'' term term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' letter  ``.'' term term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' term term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' atom term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' variable term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' letter term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' atom $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' variable $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' letter $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' ``K''\\
+
+
+% | let-expr $\rightarrow$ ``let'' variable ``='' term $\rightarrow$ term\\
+% || term $\rightarrow$ abstraction\\
+% ||| abstraction $\rightarrow$ ``$\lambda$'' params ``.'' term $\rightarrow$ params\\
+% |||| params $\rightarrow$ variable params $\rightarrow$ variable\\
+% ||||| variable $\rightarrow$ ``x''\\
+% |||| params $\rightarrow$ variable params $\rightarrow$ params $\rightarrow$ variable\\
+% ||||| variable $\rightarrow$ ``y''\\
+% ||| abstraction $\rightarrow$ ``$\lambda$'' params ``.'' term $\rightarrow$ term\\
+% |||| term $\rightarrow$ atom $\rightarrow$ variable\\
+% ||||| variable $\rightarrow$ ``x''\\
 \end{document}
