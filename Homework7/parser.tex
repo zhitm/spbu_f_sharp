@@ -11,33 +11,17 @@
 
 \section{Parser}
 
-program ::= term $\vert$ let-exprs term\\
-let-exprs ::= let-expr let-exprs $\vert$ let-expr\\
-let-expr ::= ``let'' variable ``='' term\\
-term ::= atom $\vert$ application $\vert$ abstraction \\
-params ::= variable $\vert$ variable params\\
-variable :: = letter $\vert$ variable letter $\vert$ variable digit\\
-letter ::= ``a'' $\vert$ ``b'' $\vert$ ... ``Z''\\
-digit ::= ``1'' $\vert$ ... ``9'' $\vert$ ``0''\\
-application ::= atom $\vert$ application atom\\
-atom ::= parenthesized-term $\vert$ variable\\
-parenthesized-term ::= ``(" term ``)"\\
-abstraction ::= ``$\lambda$'' params ``.'' term\\
-
-After factorization:\\
-
-
-
 
 program ::= term $\vert$ let-exprs term\\
 let-exprs ::=let-expr let-exprs $\vert$ let-expr\\
 let-expr ::= ``let'' variable ``='' term\\
 term ::= atom $\vert$ application $\vert$ abstraction \\
 params ::= variable $\vert$ variable params\\
-variable ::= letter $\vert$ variable letter-or-digit\\
+variable ::= letter $\vert$ letter letter-or-digit-string\\
+letter-or-digit-string ::= letter-or-digit $\vert$ letter-or-digit letter-or-digit-string\\
 letter-or-digit ::= letter $\vert$ digit\\letter ::= ``a'' $\vert$ ``b'' $\vert$ ... ``Z''\\
 digit ::= ``1'' $\vert$ ... ``9'' $\vert$ ``0''\\
-application ::= atom $\vert$ application atom\\
+application ::= atom atom $\vert$ atom application\\
 atom ::= parenthesized-term $\vert$ variable\\
 parenthesized-term ::= ``(" term ``)"\\
 abstraction ::= ``$\lambda$'' params ``.'' term\\
@@ -72,14 +56,5 @@ let-expr term $\rightarrow$ ``let'' variable ``='' term term $\rightarrow$\\
 ``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' ``K''\\
 
 
-% | let-expr $\rightarrow$ ``let'' variable ``='' term $\rightarrow$ term\\
-% || term $\rightarrow$ abstraction\\
-% ||| abstraction $\rightarrow$ ``$\lambda$'' params ``.'' term $\rightarrow$ params\\
-% |||| params $\rightarrow$ variable params $\rightarrow$ variable\\
-% ||||| variable $\rightarrow$ ``x''\\
-% |||| params $\rightarrow$ variable params $\rightarrow$ params $\rightarrow$ variable\\
-% ||||| variable $\rightarrow$ ``y''\\
-% ||| abstraction $\rightarrow$ ``$\lambda$'' params ``.'' term $\rightarrow$ term\\
-% |||| term $\rightarrow$ atom $\rightarrow$ variable\\
-% ||||| variable $\rightarrow$ ``x''\\
 \end{document}
+
