@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{hw7}
+\author{Zhitm}
+\date{May 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Parser}
+
+program ::= variable $\vert$ let-expr $\vert$ variable program $\vert$ let-expr program\\
+let-expr ::= ``let'' variable ``='' term\\
+term ::= atom $\vert$ application $\vert$ abstraction \\
+params ::= variable $\vert$ variable params\\
+variable :: = letter $\vert$ variable letter $\vert$ variable digit\\
+letter ::= ``a'' $\vert$ ``b'' $\vert$ ... ``Z''\\
+digit ::= ``1'' $\vert$ ... ``9'' $\vert$ ``0''\\
+application ::= atom $\vert$ application atom\\
+atom ::= parenthesized-term $\vert$ variable\\
+parenthesized-term ::= ``(" term ``)"\\
+abstraction ::= ``$\lambda$'' params ``.'' term\\
+
+Exaples:\\
+let K = $\lambda$x y.x\\
+program $\rightarrow$ let-expr\\
+| let-expr $\rightarrow$ ``let'' variable ``='' term $\rightarrow$ variable\\
+|| variable $\rightarrow$ ``K''\\
+| let-expr $\rightarrow$ ``let'' variable ``='' term $\rightarrow$ term\\
+|| term $\rightarrow$ abstraction\\
+||| abstraction $\rightarrow$ ``$\lambda$'' params ``.'' term $\rightarrow$ params\\
+|||| params $\rightarrow$ variable params $\rightarrow$ variable\\
+||||| variable $\rightarrow$ x\\
+|||| params $\rightarrow$ variable params $\rightarrow$ params $\rightarrow$ variable\\
+||||| variable $\rightarrow$ y\\
+||| abstraction $\rightarrow$ ``$\lambda$'' params ``.'' term $\rightarrow$ term\\
+|||| term $\rightarrow$ atom $\rightarrow$ variable\\
+||||| variable $\rightarrow$ ``x''\\
+\end{document}
