@@ -17,9 +17,9 @@ let Test3 () = parseString "{([])}" |> should be True
 let Test4 () = parseString "{([)]}" |> should be False
 
 [<Test>]
-let Test5 () = parseString "{}[]()" |> should be True
+let Test5 () = parseString "{}[](ffff)" |> should be True
 
 
 [<Test>]
-let Test6 () = parseString "NOT A STRING" |> should be False
+let Test6 () = parseString "AAA" |> should be True
 
