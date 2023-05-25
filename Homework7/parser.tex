@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
+\usepackage[T1]{fontenc} % for \symbol{92}, \smallsetminus, \diagdown
 
 \title{hw7}
 \author{Zhitm}
@@ -14,13 +15,13 @@
 
 program ::= term $\vert$ let-exprs term\\
 let-exprs ::=let-expr let-exprs $\vert$ let-expr\\
-let-expr ::= ``let'' variable ``='' term\\
+let-expr ::= ``let'' variable ``='' term`` ``\symbol{92}n'' \\
 term ::= atom $\vert$ application $\vert$ abstraction \\
 params ::= variable $\vert$ variable params\\
 variable ::= letter $\vert$ letter letter-or-digit-string\\
 letter-or-digit-string ::= letter-or-digit $\vert$ letter-or-digit letter-or-digit-string\\
-letter-or-digit ::= letter $\vert$ digit\\letter ::= ``a'' $\vert$ ``b'' $\vert$ ... ``Z''\\
-digit ::= ``1'' $\vert$ ... ``9'' $\vert$ ``0''\\
+letter-or-digit ::= letter $\vert$ digit\\letter ::= ``a'' $\vert$ ``b'' $\vert$ ... $\vert$``Z''\\
+digit ::= ``1'' $\vert$ ... $\vert$``9'' $\vert$ ``0''\\
 application ::= atom atom $\vert$ atom application\\
 atom ::= parenthesized-term $\vert$ variable\\
 parenthesized-term ::= ``(" term ``)"\\
@@ -30,31 +31,30 @@ abstraction ::= ``$\lambda$'' params ``.'' term\\
 
 
 
-Exaples:\\
+\noindent Exaples:\\
 let K = $\lambda$x y.x\\
 K\\
 
 
-program $\rightarrow$ let-exprs term $\rightarrow$\\
-let-expr term $\rightarrow$ ``let'' variable ``='' term term $\rightarrow$\\
-``let'' letter ``='' term term $\rightarrow$ ``let'' ``K'' ``='' term term$\rightarrow$\\
-``let'' ``K'' ``='' abstraction term$\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' params ``.'' term term$\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' variable params  ``.'' term term $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' letter params  ``.'' term term $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' params  ``.'' term term $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' variable  ``.'' term term $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' letter  ``.'' term term $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' term term $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' atom term $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' variable term $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' letter term $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' term $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' atom $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' variable $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' letter $\rightarrow$\\
-``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' ``K''\\
-
+\noindent program $\rightarrow$ let-exprs term $\rightarrow$\\
+let-expr term $\rightarrow$ ``let'' variable ``='' term \\term $\rightarrow$\\
+``let'' letter ``='' term \\term $\rightarrow$ ``let'' ``K'' ``='' term\\term$\rightarrow$\\
+``let'' ``K'' ``='' abstraction \\term$\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' params ``.'' term \\term$\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' variable params  ``.'' term \\term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' letter params  ``.'' term \\term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' params  ``.'' term \\term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' variable  ``.'' term \\term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' letter  ``.'' term \\term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' term \\term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' atom \\term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' variable \\term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' letter \\term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' \\term $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' \\atom $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' \\variable $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' \\letter $\rightarrow$\\
+``let'' ``K'' ``='' ``$\lambda$'' ``x'' ``y''  ``.'' ``x'' \\``K''\\
 
 \end{document}
 
