@@ -1,9 +1,8 @@
 ﻿module Primes
 
-
 let LSqrt n =
     let nF = (float n)
-    int (sqrt nF)
+    int64 (sqrt nF)
 
 let isPrime n =
     let rec isPrime n acc =
@@ -11,16 +10,16 @@ let isPrime n =
         else if n % acc = 0L then false
         else isPrime n (acc - 1L)
 
-    if n = 1 then false else isPrime n (LSqrt n)
+    if n = 1L then false else isPrime n (LSqrt n)
 
 let getPrimes () =
     let rec getNext acc =
         seq {
             if (isPrime acc) then
                 yield acc
-                yield! getNext (acc + 1)
+                yield! getNext (acc + 1L)
             else
-                yield! getNext (acc + 1)
+                yield! getNext (acc + 1L)
         }
 
     getNext 2
