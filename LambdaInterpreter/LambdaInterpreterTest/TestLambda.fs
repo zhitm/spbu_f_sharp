@@ -6,45 +6,63 @@ open FsUnit
 
 [<Test>]
 let testReductionAppLambda1 () =
-    reduce (Application(Lambda("a", Variable "a"), Variable "a"))
+    reduceWhileNecessary (Application(Lambda("a", Variable "a"), Variable "a"))
     |> should equal (Variable "a")
 
 [<Test>]
 
 let testReductionAppLambda2 () =
-    reduce (Application(Lambda("a", Variable "b"), Variable "a"))
+    reduceWhileNecessary (Application(Lambda("a", Variable "b"), Variable "a"))
     |> should equal (Variable "b")
 
 [<Test>]
 
 let testReductionAppLambda3 () =
-    reduce (Application(Lambda("a", Variable "b"), Variable "b"))
+    reduceWhileNecessary (Application(Lambda("a", Variable "b"), Variable "b"))
     |> should equal (Variable "b")
 
 [<Test>]
 let testReductionAppLambda4 () =
-    reduce (Application(Lambda("a", Variable "c"), Variable "b"))
+    reduceWhileNecessary (Application(Lambda("a", Variable "c"), Variable "b"))
     |> should equal (Variable "c")
+
+[<Test>]
+let testReductionAppLambda5 () =
+    let t =
+        Application(Application(Lambda("x", Lambda("y", Variable "y")), Variable "a"), Variable "b")
+
+    reduceWhileNecessary (t) |> should equal (Variable "b")
+
 
 
 [<Test>]
 let testReductionVariable () =
-    reduce (Variable "a") |> should equal (Variable "a")
+    reduceWhileNecessary (Variable "a") |> should equal (Variable "a")
 
 [<Test>]
 let testReductionApplication () =
-    reduce (Application(Variable "a", Variable "b"))
+    reduceWhileNecessary (Application(Variable "a", Variable "b"))
     |> should equal (Application(Variable "a", Variable "b"))
 
 [<Test>]
 let testGetNewVariable1 () =
-    getNewVariable "x" [ "x"; "y"; "xx" ] |> should equal "xxxx"
+    getNewVariable "x" [ "x"; "y"; "varxx" ] |> should equal "varvarxxvarxx"
 
 [<Test>]
 let testGetNewVariable2 () =
-    getNewVariable "x" [ "a"; "y"; "x" ] |> should equal "xx"
+    getNewVariable "x" [ "a"; "y"; "x" ] |> should equal "varxx"
 
 [<Test>]
 let testReductionLambda () =
-    reduce (Lambda("a", (Application(Lambda("a", Variable "c"), Variable "b"))))
+    reduceWhileNecessary (Lambda("a", (Application(Lambda("a", Variable "c"), Variable "b"))))
     |> should equal (Lambda("a", Variable "c"))
+
+[<Test>]
+let testAlphaConversion () =
+    let t =
+        reduceWhileNecessary (
+            Application(Lambda("x", Lambda("y", Application(Variable "x", Variable "y"))), Variable "y")
+        )
+
+    reduceWhileNecessary t
+    |> should equal (Lambda("varyy", Application(Variable "y", Variable "varyy")))
